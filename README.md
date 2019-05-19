@@ -1,5 +1,7 @@
 # NC - Smart Home
 
+![NC Smart Home](https://github.com/alvarosaburido/nc-smart-home-demo/blob/master/src/assets/img/nc-smart-home.png)
+
 Smart Home App with [ZircleUI](https://zircleui.github.io/docs/) and Vuejs demo for [24th May Frontend Lovers Meetup 2019](https://www.meetup.com/es-ES/Javascript-Love-Barcelona/events/260308712/)
 
 ## Project setup
