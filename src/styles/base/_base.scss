@@ -1,0 +1,11 @@
+.badge {
+  font-size: 12px;
+  border-radius: 50px;
+  background-color: var(--gray-light);
+  padding: 1px 6px 2px;
+
+  &--dark {
+    background-color: var(--gray-dark);
+    color: var(--gray-light);
+  }
+}

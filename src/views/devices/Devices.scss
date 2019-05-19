@@ -1,0 +1,25 @@
+.devices {
+  &__item {
+    /* .z-content {
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
+    } */
+
+    img {
+      width: 60%;
+    }
+
+    .z-label > .inside {
+      font-size: 10px;
+      align-items: center;
+      border-radius: 10px;
+      border: 1px solid hsl(var(--accent-HS), 50%, 20%);
+    }
+
+    &--starred {
+      .z-label > .inside {
+        color: var(--gold-color);
+        border: 1px solid var(--gold-color);
+      }
+    }
+  }
+}

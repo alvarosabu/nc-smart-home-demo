@@ -1,0 +1,196 @@
+@mixin hover {
+  &:hover {
+    @content;
+  }
+}
+
+@mixin hover-focus {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin plain-hover-focus {
+  &,
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin hover-focus-active {
+  &:hover,
+  &:focus,
+  &:active {
+    @content;
+  }
+}
+
+// Contextual backgrounds
+
+@mixin bg-variant($parent, $color) {
+  #{$parent} {
+    background-color: $color;
+  }
+
+  a#{$parent},
+  button#{$parent} {
+    @include hover-focus {
+      background-color: darken($color, 10%);
+    }
+  }
+}
+// Contextual text
+
+@mixin text-color($parent, $color) {
+  #{$parent} {
+    color: $color;
+  }
+}
+// Contextual backgrounds
+
+@mixin bg-gradient($parent, $gradient) {
+  #{$parent} {
+    background: $gradient;
+  }
+}
+
+// Gradient text
+
+@mixin text-gradient($parent, $gradient) {
+  #{$parent} {
+    background-image: $gradient;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+// Buttons
+
+@mixin btn-variant($parent, $bg, $color) {
+  #{$parent} {
+    background-color: $bg;
+    color: $color;
+
+    @include hover {
+      background-color: darken($bg, 10%);
+    }
+  }
+}
+
+@mixin btn-outline-variant($parent, $bg, $color) {
+  #{$parent} {
+    background-color: transparent;
+    border: 1px solid $bg;
+    color: $bg;
+
+    @include hover {
+      background-color: $bg;
+      color: $color;
+    }
+  }
+}
+
+@mixin text-inked() {
+  background: url('~@/assets/img/ink.jpg') no-repeat;
+  background-size: cover;
+  color: #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Shadows
+
+@mixin paper-shadow($num, $shadow) {
+  .shadow-#{$num} {
+    box-shadow: $shadow;
+  }
+}
+
+//Breakpoints
+$breakpoints: (
+  'alpha': '(min-width: 80.5em)',
+  'beta': '(min-width: 1440px)',
+  'reverse-beta': '(max-width: 1440px)',
+  'gamma': '(min-width: 800px)',
+  'reverse-gamma': '(max-width: 800px)',
+  'epsilon': '(min-width: 720px)',
+  'reverse-epsilon': '(max-width: 720px)',
+  '1x': '(-webkit-device-pixel-ratio: 1)',
+  '2x': '(-webkit-device-pixel-ratio: 2)',
+  '3x': '(-webkit-device-pixel-ratio: 3)',
+) !default;
+
+@mixin breakpoint($point) {
+  $query: map-get($breakpoints, $point);
+
+  @media #{$query} {
+    @content;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin flex-centered($display: flex, $justify-content: center, $align-items: center) {
+  display: $display;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false) {
+  @include pseudo($pos: $position);
+  width: 0;
+  height: 0;
+
+  @if $round {
+    border-radius: 3px;
+  }
+
+  @if $direction == down {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+    margin-top: 0 - round($size / 2.5);
+  } @else if $direction == up {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+    margin-bottom: 0 - round($size / 2.5);
+  } @else if $direction == right {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    margin-right: -$size;
+  } @else if $direction == left {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    margin-left: -$size;
+  }
+}
+
+@mixin upsidedown() {
+  filter: hue-rotate(-157deg) saturate(0.3) brightness(0.4);
+  transform: scale(1, -1);
+}
+
+@mixin tab-focus() {
+  // WebKit-specific. Other browsers will keep their default outline style.
+  // (Initially tried to also force default via `outline: initial`,
+  // but that seems to erroneously remove the outline in Firefox altogether.)
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+@mixin circle($padding: 1rem, $size: 25px) {
+  @include flex-centered();
+  border-radius: 50%;
+  width: $size;
+  height: $size;
+}

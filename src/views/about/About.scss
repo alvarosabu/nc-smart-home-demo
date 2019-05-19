@@ -1,0 +1,37 @@
+.about {
+  &__background {
+    width: 120%;
+    position: absolute;
+    top: 0;
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 0;
+    background: var(--shade-color);
+    padding: 1rem;
+    font-size: 12px;
+    width: 80%;
+  }
+
+  &__title,
+  &__text {
+    margin-bottom: 1rem;
+  }
+
+  .z-content.maincontent > div {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 10px;
+    background: transparent;
+
+    a {
+      color: var(--accent-color);
+    }
+  }
+}

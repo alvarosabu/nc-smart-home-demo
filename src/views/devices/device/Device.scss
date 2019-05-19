@@ -1,0 +1,33 @@
+.device {
+  &__bg {
+    position: absolute;
+    width: 150%;
+    left: 0;
+    top: 0;
+    opacity: 0.05;
+    filter: grayscale(1);
+  }
+  &__media {
+    img {
+      width: 75%;
+    }
+  }
+
+  &__trend {
+    width: 100%;
+    height: 75px;
+
+    svg {
+      height: 100%;
+      width: 75%;
+    }
+  }
+
+  .z-range-bar {
+    stroke: hsl(var(--accent-HS), 60%, 100%);
+  }
+
+  .z-range-bar-handlebar {
+    fill: var(--gray-light);
+  }
+}
