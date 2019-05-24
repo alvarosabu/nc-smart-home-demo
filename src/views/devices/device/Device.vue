@@ -7,7 +7,7 @@
     <br />
     <span class="badge">{{ device.ip }}</span>
     <br />
-    <div class="device__trend">
+    <!--  <div class="device__trend">
       <TrendChart
         v-if="device.dataset && device.dataset.length > 5"
         :datasets="[
@@ -20,7 +20,7 @@
           },
         ]"
       ></TrendChart>
-    </div>
+    </div>-->
     <div slot="extension">
       <z-spot
         v-if="device.category"
